@@ -28,7 +28,7 @@ def sort1(A):
                 min = A[i]
                 k = i
         B[j] = min
-        A[k] = float("lnf")
+        A[k] = float("inf")
     return B 
 
 def Bubble(A):
