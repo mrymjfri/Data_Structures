@@ -24,8 +24,8 @@ def sort1(A):
         min=A[0]
         K=0
         for i in range(1,len(A)):
-            if A[j] < min:
-                min = A[j]
+            if A[i] < min:
+                min = A[i]
                 k = i
         B[j] = min
         A[k] = float("lnf")
