@@ -4,7 +4,7 @@ def BFS(graph , start):
     while queue:
         vertex = queue.pop(0)
         for ne in graph[vertex]:
-            if ne not visited:
+            if ne not in visited:
                 visited.add(ne)
                 queue.append(ne)
 
