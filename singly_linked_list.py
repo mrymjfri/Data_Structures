@@ -7,7 +7,7 @@ class node :
 
 
 class linked_list :
-    def init(self):
+    def __init__(self):
         self.head = None
     def insert_frist(self , x):
         if self.head == None:
