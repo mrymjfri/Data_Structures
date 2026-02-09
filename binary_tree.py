@@ -83,4 +83,4 @@ class Tree_Node :
     def count(root):
         if root is None:
             return 0
-        return 1+ count(root.Lchild) + count(root.Rchild)+1
+        return count(root.Lchild) + count(root.Rchild)+1
