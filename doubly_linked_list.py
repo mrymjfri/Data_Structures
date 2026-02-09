@@ -6,7 +6,7 @@ class dnode():
 
 
 class dlinked_list :
-    def init(self):
+    def __init__(self):
         self.head = None
 
     def ins_frist(self , x):
