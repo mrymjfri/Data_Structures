@@ -19,7 +19,7 @@ def DFS(graph , start , visited):
             DFS(graph , ne , visited)
 
 def sort1(A):
-    B = [] *len(A)
+    B = [0] *len(A)
     for j in range(len(A)):
         min=A[0]
         K=0
