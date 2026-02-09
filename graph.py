@@ -13,6 +13,7 @@ def BFS(graph , start):
 
 def DFS(graph , start , visited):
     visited[start] = True
+    print (start)
     for ne in graph[start]:
         if not visited[ne]:
             DFS(graph , ne , visited)
