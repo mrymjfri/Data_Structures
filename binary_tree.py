@@ -16,9 +16,9 @@ class Tree_Node :
         if root is None:
             return 0
         if root.Lchild is None and root.Rchild is not None:
-            return 1+Count_1Deg(root.Lchild)
+            return 1+Count_1Deg(root.Rchild)
         if root.Rchild None and root.Lchild is not None:
-            return 1+Count_1Deg(rootRchild)
+            return 1+Count_1Deg(root.Lchild)
         return Count_1Deg(root.Lchild) + Count_1Deg(root.Rchild)   
 
     def Count_2Deg (root):
