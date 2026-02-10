@@ -26,9 +26,9 @@ class stack :
 test = stack(10)
 test.push(23)
 test.push(110)
-test.push57)
-k=test.peek()
-K=test.pop()
+test.push(57)
+k1=test.peek()
+K2=test.pop()
 
 
 
@@ -45,7 +45,7 @@ def find1(self,x):
       for i in range(len(self.st)):
            if self.st[i] == x :
                print(i)
-                  return
+               return
 
 
 #"اخرین ایندکس x را چاپ کند"
@@ -62,16 +62,6 @@ def find2_n(self,x):
             if self.st[i] == x :
                 p=i
        print(p)                
-
-
-
-def find2_n(self,x):
-    list=[]
-    for i in range(len(self.st)):
-        if self.st[i] == x :
-            list.append(i)
-    print(list[2])
-
 
 
 
