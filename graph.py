@@ -22,7 +22,7 @@ def sort1(A):
     B = [0] *len(A)
     for j in range(len(A)):
         min=A[0]
-        K=0
+        k=0
         for i in range(1,len(A)):
             if A[i] < min:
                 min = A[i]
