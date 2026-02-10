@@ -1,71 +1,68 @@
-class stack : 
-    def __init__(self , limit = 1000):
-        self.st=[]
+class Stack:
+    def __init__(self, limit=1000):
+        self.st = []
         self.lim = limit
-    def push(self , x):
+
+    def push(self, x):
         if len(self.st) >= self.lim:
-           print("stack is full")
-           return -1
+            print("stack is full")
+            return None
         self.st.append(x)
+
     def pop(self):
-        if len(self.st) == 0 :
+        if not self.st:
             print("stack is empty")
-            return -1
+            return None
         return self.st.pop()
+
     def peek(self):
-        if len(self.st) == 0 :
+        if not self.st:
             print("stack is empty")
-            return -1
+            return None
         return self.st[-1]
-         
+
+    # ✅ همه ایندکس‌های x را برمی‌گرداند
+    def find_all(self, x):
+        indexes = []
+        for i in range(len(self.st)):
+            if self.st[i] == x:
+                indexes.append(i)
+        return indexes
+
+    # ✅ اولین ایندکس x
+    def find_first(self, x):
+        for i in range(len(self.st)):
+            if self.st[i] == x:
+                return i
+        return -1
+
+    # ✅ آخرین ایندکس x
+    def find_last(self, x):
+        for i in range(len(self.st) - 1, -1, -1):
+            if self.st[i] == x:
+                return i
+        return -1
+
+    # ✅ جایگزینی x با y
+    def replace(self, x, y):
+        for i in range(len(self.st)):
+            if self.st[i] == x:
+                self.st[i] = y
 
 
+test = Stack(10)
 
-
-
-test = stack(10)
 test.push(23)
 test.push(110)
 test.push(57)
-k1=test.peek()
-K2=test.pop()
+test.push(110)
 
+print(test.peek())          # 110
+print(test.pop())           # 110
 
+print(test.find_all(110))   # [1]
+print(test.find_first(57))  # 2
+print(test.find_last(110))  # 1
 
-
-#"ایندکس تمامیx های درون پشته را برگرداند."
-def find(self,x):
-    for i in range(len(self.st)):
-          if self.st[i] == x :
-              print(i)
-
-
-#"اولین ایندکس x را برگرداند"
-def find1(self,x):
-      for i in range(len(self.st)):
-           if self.st[i] == x :
-               print(i)
-               return
-
-
-#"اخرین ایندکس x را چاپ کند"
-1)#
-def find2(self,x):
-       for i in range(len(self.st)-1,-1,-1) :
-            if self.st[i] == x :
-                print(i)
-                return
-
-#2)
-def find2_n(self,x):
-       for i in range(len(self.st)):
-            if self.st[i] == x :
-                p=i
-       print(p)                
-
-
-
-def replace(self,x,y):
-       for i in range(len(self.st)):
-            if self.st[i] == x :
-                self.st[i]=y
+test.replace(23, 999)
+print(test.st)              # [999, 110, 57]
