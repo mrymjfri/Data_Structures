@@ -50,7 +50,7 @@ def Bubble(A):
     return A
 
 
-# -------- Selection Sort --------
+
 def selection_sort(A):
     for j in range(len(A)):
         min_index = j
