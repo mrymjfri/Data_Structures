@@ -1,87 +1,76 @@
 class C_Queue:
-    def __init__(self, max = 100):
-        self.list = [] * max
+    def __init__(self, max=100):
+        self.list = [None] * max
         self.front = -1
         self.rear = -1
-    def  insert(self , x):
-        if (self.rear +1) % len(self.list) == self.front:
+        self.size = max
+
+    def insert(self, x):
+        if (self.rear + 1) % self.size == self.front:
             print("Queue is full")
             return
-        if  self.front == -1:
+        if self.front == -1:
             self.front = 0
             self.rear = 0
             self.list[self.rear] = x
-            return
-        self.rear=(self.rear +1) % len(self.list)
-        self.list[self.rear] = x
+        else:
+            self.rear = (self.rear + 1) % self.size
+            self.list[self.rear] = x
+
     def delete_(self):
         if self.front == -1:
             print("Queue is empty")
-            return
+            return None
+        k = self.list[self.front]
         if self.front == self.rear:
-            k = self.list[self.front]
             self.front = -1
             self.rear = -1
-            return k
-        k = self.list[self.front]
-        self.front = (self.front +1) % len (self.list)
+        else:
+            self.front = (self.front + 1) % self.size
         return k
+
     def is_empty(self):
         return self.front == -1
-    
+
     def is_full(self):
-        return (self.rear +1) % len (self.list) == self.front
-    
+        return (self.rear + 1) % self.size == self.front
+
     def show_valid(self):
-        if self.front=-1:
-            print("'Queue is empty")
-            return 
-        i=self.front
-        print (self.list[i])
-        while i !=self rear:
-            i=(i+1)%len(self.list):
-                print (self.list[i])
-
-def show_valid(def):
-    if self.front=-1
-        print ("'Queue is empty")
-        return 
-    if self.rear > self.frint:
-        print (self.list[i])
-    else:
-        for i in range (self.front , len(self.list)):
-            print (self.list[i])
-        for i in range (self rear+1):
-            print (self.list[i])
-
-    def show_invalid(self):
         if self.front == -1:
-            for i in range(len(self.list)):
-                print(self[i])
-                return
-            i = (self.list+[i])
-            while i != self.front:
-                print(self.list[i])
-                i = (i +1) % len (self.list)
-
-    def find(self , x):
-        if self.is_empty():
+            print("Queue is empty")
             return
         i = self.front
-        if self.list[i] == x:
-            return i
-        while i != self.rear:
-            i = (i +1) % len(self.list)
+        print("Queue contents:", end=" ")
+        while True:
+            print(self.list[i], end=" ")
+            if i == self.rear:
+                break
+            i = (i + 1) % self.size
+        print()
+
+    def find(self, x):
+        if self.is_empty():
+            print("Queue is empty")
+            return None
+        i = self.front
+        while True:
             if self.list[i] == x:
                 return i
-            
-    def raplace(self , x , y):
+            if i == self.rear:
+                break
+            i = (i + 1) % self.size
+        print("Not found")
+        return None
+
+    def replace(self, x, y):
         if self.is_empty():
+            print("Queue is empty")
             return
         i = self.front
-        if self.list[i] == x:
-            self.list[i] = y
-        while i != self.rear:
-            i = (i +1) % len (self.list)
+        while True:
             if self.list[i] == x:
                 self.list[i] = y
+            if i == self.rear:
+                break
+            i = (i + 1) % self.size
+                          
