@@ -1,25 +1,24 @@
-class dnode():
-    def __init__(self , x):
+class dnode:
+    def __init__(self, x):
         self.Data = x
         self.next = None
         self.back = None
 
 
-class dlinked_list :
+class dlinked_list:
     def __init__(self):
         self.head = None
 
-    def ins_frist(self , x):
-        if self.head is None:
-            self.head = dnode(x)
-            return 
-        a=dnode(x)
-        a.next = self.head
+    def ins_first(self, x):
+        a = dnode(x)
+        if self.head is not None:
+            a.next = self.head
+            self.head.back = a
         self.head = a
-        a.next.back = a
-    def ins_last(self , x):
+
+    def ins_last(self, x):
         if self.head is None:
-            self.ins_frist(x)
+            self.ins_first(x)
             return
         c = self.head
         while c.next:
@@ -27,51 +26,49 @@ class dlinked_list :
         a = dnode(x)
         c.next = a
         a.back = c
-    def ins_after(self , x ,y):
-        if self.head is None:
-            print("error")
-            return
+
+    def ins_after(self, x, y):
         c = self.head
-        while c :
-            if c.data == x:
+        while c:
+            if c.Data == x:
                 if c.next is None:
                     self.ins_last(y)
                     return
                 a = dnode(y)
                 a.next = c.next
-                c.next = a
-                a.next.back = a
                 a.back = c
+                c.next.back = a
+                c.next = a
                 return
             c = c.next
         print("not found")
-    def ins_befor(self , x , y):
-        if self.head is None:
-            print("error")
-            return
+
+    def ins_before(self, x, y):
         c = self.head
         while c:
             if c.Data == x:
                 if c.back is None:
-                    self.ins_frist(y)
+                    self.ins_first(y)
                     return
                 a = dnode(y)
                 a.next = c
-                c.back.next = a
                 a.back = c.back
+                c.back.next = a
                 c.back = a
                 return
             c = c.next
         print("not found")
-    
+
     def del_first(self):
         if self.head is None:
-            print("error 0")
+            print("error")
             return
-        C=self head
-        self.head = C.next
-        del C
-        if self.head.back=None
+        c = self.head
+        self.head = c.next
+        if self.head:
+            self.head.back = None
+        del c
+
     def del_last(self):
         if self.head is None:
             print("error")
@@ -84,51 +81,49 @@ class dlinked_list :
             return
         c.back.next = None
         del c
-    def del_befor(self , x):
-        if self.head is None:
-            print("error")
-            return
-        if self.head.Data == x:
-            print("error")
-            return
+
+    def del_before(self, x):
         c = self.head
-        while c :
+        while c:
             if c.Data == x:
+                if c.back is None:
+                    print("no node before head")
+                    return
                 a = c.back
-                c.back = a.back
                 if a.back:
                     a.back.next = c
+                    c.back = a.back
+                else:
+                    self.head = c
+                    c.back = None
                 del a
                 return
             c = c.next
-            print("x not found")
-    def del_after(self,x):
-        if self.head is None:
-            print("error 0")
-            return
+        print("not found")
+
+    def del_after(self, x):
         c = self.head
         while c:
             if c.Data == x:
-                if c.next :
-                    a = c.next
-                    c.next = a.next
-                    if a.next:
-                        a.next.back = c
-                    del a
-                print("error 1")
+                if c.next is None:
+                    print("no node after")
+                    return
+                a = c.next
+                c.next = a.next
+                if a.next:
+                    a.next.back = c
+                del a
                 return
             c = c.next
-            print("not found")
-    def del_x(self , x):
-        if self.head is None:
-            print("error 0")
-            return
-        if self.head.data==x:
-            self.del_first()
-            return 
+        print("not found")
+
+    def del_x(self, x):
         c = self.head
         while c:
             if c.Data == x:
+                if c.back is None:
+                    self.del_first()
+                    return
                 if c.next is None:
                     self.del_last()
                     return
@@ -137,4 +132,5 @@ class dlinked_list :
                 del c
                 return
             c = c.next
-            print("not found")
+        print("not found")
+            
